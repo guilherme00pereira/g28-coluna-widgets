@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: G28 Coluna Widgets
-Description: 
-Version: 0.1
+Description: Widgets Extras para Elementor
+Version: 0.1.1
 Author: G28 - Guilherme Pereira
 */
 

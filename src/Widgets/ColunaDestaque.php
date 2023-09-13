@@ -2,6 +2,7 @@
 
 namespace G28\ColunaWidgets\Widgets;
 
+use G28\ColunaWidgets\DB;
 use Elementor\Widget_Base;
 
 class ColunaDestaque extends Widget_Base
@@ -87,6 +88,9 @@ class ColunaDestaque extends Widget_Base
 
     protected function render()
     {
-        
+        $post = DB::getLastColunaPost();
+        ?>
+            <div><?php echo $post->post_title; ?></div>
+        <?php
     }
 }

@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Guilheps\\G28ColunaWidgets\\' => array($baseDir . '/src'),
+    'G28\\ColunaWidgets\\' => array($baseDir . '/src'),
 );

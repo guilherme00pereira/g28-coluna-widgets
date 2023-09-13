@@ -9,6 +9,7 @@ class DB
         global $wpdb;
 
         $query = "SELECT ID FROM {$wpdb->prefix}posts WHERE post_type = 'coluna' AND post_status = 'publish' ORDER BY post_date DESC LIMIT 1";
-        
+        $result = $wpdb->get_results($query);
+        return $result[0];
     }
 }

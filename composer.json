@@ -1,0 +1,18 @@
+{
+    "name": "g28/coluna-widgets",
+    "autoload": {
+        "psr-4": {
+            "G28\\ColunaWidgets\\": "src/"
+        },
+        "files": [
+            "src/startup.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Guilherme Pereira",
+            "email": "guilherme00pereira@gmail.com"
+        }
+    ],
+    "require": {}
+}

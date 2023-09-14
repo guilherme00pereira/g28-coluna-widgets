@@ -47,8 +47,8 @@ class ColunaDestaque extends Widget_Base
         echo '<div class="coluna-destaque__content__data">';
         echo '<h6>' . get_post_meta(get_the_ID(), 'data', true) . '</h6>';
         echo '</div>';
-        echo '<div class="coluna-destaque__image">';
-        echo '<img src="' . get_the_post_thumbnail_url() . '" alt="' . get_the_title() . '">';
+        echo '<div class="coluna-destaque__video">';
+        echo '<iframe src="https://youtube.com/embed/' . get_post_meta(get_the_ID(), "link_youtube", true) .  '" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
         echo '</div>';
         echo '<div class="coluna-destaque__content__text">';
         echo '<p>' . get_post_meta(get_the_ID(), 'resumo', true) . '</p>';

@@ -2,7 +2,8 @@
 
 namespace G28\ColunaWidgets\Widgets;
 
-use G28\ColunaWidgets\DB;
+use WP_Query;
+
 use Elementor\Widget_Base;
 
 class ColunaDestaque extends Widget_Base
@@ -27,70 +28,31 @@ class ColunaDestaque extends Widget_Base
         return ['basic'];
     }
 
-    protected function _register_controls()
-    {
-        $this->start_controls_section(
-            'section_content',
-            [
-                'label' => 'Conteúdo',
-            ]
-        );
-
-        $this->add_control(
-            'titulo',
-            [
-                'label' => 'Título',
-                'type' => 'text',
-                'default' => 'Título',
-            ]
-        );
-
-        $this->add_control(
-            'subtitulo',
-            [
-                'label' => 'Subtítulo',
-                'type' => 'text',
-                'default' => 'Subtítulo',
-            ]
-        );
-
-        $this->add_control(
-            'texto',
-            [
-                'label' => 'Texto',
-                'type' => 'textarea',
-                'default' => 'Texto',
-            ]
-        );
-
-        $this->add_control(
-            'link',
-            [
-                'label' => 'Link',
-                'type' => 'url',
-                'default' => 'https://www.google.com',
-            ]
-        );
-
-        $this->add_control(
-            'imagem',
-            [
-                'label' => 'Imagem',
-                'type' => 'media',
-                'default' => [
-                    'url' => 'https://picsum.photos/200/300',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-    }
-
     protected function render()
     {
-        $post = DB::getLastColunaPost();
-        ?>
-            <div><?php echo $post->post_title; ?></div>
-        <?php
+        $args = array(
+            'post_type' => 'coluna_episodio',
+            'post_status' => 'publish',
+            'posts_per_page' => 1,
+            'orderby' => 'post_date',
+            'order' => 'DESC'
+        );
+        $postQuery = new WP_Query($args);
+        $postQuery->the_post();
+        echo '<div class="coluna-destaque">';
+        echo '<div class="coluna-destaque__content__title">';
+        echo '<h2>' . get_post_meta(get_the_ID(), 'titulo', true) . '</h2>';
+        echo '</div>';
+        echo '<div class="coluna-destaque__content__data">';
+        echo '<h6>' . get_post_meta(get_the_ID(), 'data', true) . '</h6>';
+        echo '</div>';
+        echo '<div class="coluna-destaque__image">';
+        echo '<img src="' . get_the_post_thumbnail_url() . '" alt="' . get_the_title() . '">';
+        echo '</div>';
+        echo '<div class="coluna-destaque__content__text">';
+        echo '<p>' . get_post_meta(get_the_ID(), 'resumo', true) . '</p>';
+        echo '</div>';
+        echo '</div>';
+
     }
 }

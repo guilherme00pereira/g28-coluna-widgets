@@ -20,7 +20,7 @@ class ColunaDestaque extends Widget_Base
 
     public function get_icon()
     {
-        return 'fa fa-code';
+        return 'eicon-archive-title';
     }
 
     public function get_categories()
@@ -40,6 +40,7 @@ class ColunaDestaque extends Widget_Base
         $postQuery = new WP_Query($args);
         $postQuery->the_post();
         echo '<div class="coluna-destaque">';
+        echo '<div class="coluna-destaque__content">';
         echo '<div class="coluna-destaque__content__title">';
         echo '<h2>' . get_post_meta(get_the_ID(), 'titulo', true) . '</h2>';
         echo '</div>';
@@ -53,6 +54,6 @@ class ColunaDestaque extends Widget_Base
         echo '<p>' . get_post_meta(get_the_ID(), 'resumo', true) . '</p>';
         echo '</div>';
         echo '</div>';
-
+        echo '</div>';
     }
 }

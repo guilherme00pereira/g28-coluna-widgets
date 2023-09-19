@@ -6,6 +6,7 @@ function registerWidgets( $widgets_manager )
 {
     $widgets_manager->register_widget_type( new Widgets\ColunaDestaque() );
     $widgets_manager->register_widget_type( new Widgets\ListaColunas() );
+    $widgets_manager->register_widget_type( new Widgets\BotaoCarregaMais() );
 }
 
 if( !function_exists( __NAMESPACE__ . 'runPlugin') )

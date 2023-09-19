@@ -28,12 +28,36 @@ class ListaColunas extends Widget_Base
         return ['basic'];
     }
 
+    protected function register_controls()
+    {
+        $this->start_controls_section(
+            'section_content',
+            [
+                'label' => 'Configurações da Lista',
+            ]
+        );
+        $this->add_control(
+            'qty_items',
+            [
+                'label' => 'Quantidade de itens',
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'placeholder' => '9',
+                'min' => 6,
+                'max' => 24,
+                'step' => 1,
+                'default' => 9,
+            ]
+        );
+        $this->end_controls_section();
+    }
+
     protected function render()
     {
+        $settings = $this->get_settings_for_display();
         $args = array(
             'post_type' => 'coluna_episodio',
             'post_status' => 'publish',
-            'posts_per_page' => 9,
+            'posts_per_page' => $settings['qty_items'],
             'orderby' => 'post_date',
             'order' => 'DESC'
         );
@@ -43,7 +67,7 @@ class ListaColunas extends Widget_Base
             $postQuery->the_post();
             $dbData = get_post_meta(get_the_ID(), 'data', true);
             $brDate = date("d/m/Y", strtotime($dbData));
-            echo '<div class="coluna-lista-item">';
+            echo '<li class="coluna-lista-item">';
             echo '<a href="' . get_permalink() . '">';
             echo '<div class="coluna-lista-item__image">';
             echo '<img src="' . get_the_post_thumbnail_url() . '" alt="' . get_the_title() . '">';
@@ -57,7 +81,7 @@ class ListaColunas extends Widget_Base
             echo '</div>';
             echo '</div>';
             echo '</a>';
-            echo '</div>';
+            echo '</li>';
         }
         ?> </ul> <?php
         

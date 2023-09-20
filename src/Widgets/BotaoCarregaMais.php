@@ -35,7 +35,7 @@ class BotaoCarregaMais extends Widget_Base
     {
         ?>
             <div class="wrapper-btn-veja-mais">
-                <button class="btn-veja-mais-colunas">VEJA TODAS AS COLUNAS</button>
+                <button id="btn-veja-mais-colunas" class="btn-veja-mais-colunas">VEJA TODAS AS COLUNAS</button>
             </div>
         <?php
     }

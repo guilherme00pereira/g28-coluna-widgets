@@ -190,6 +190,7 @@
 .coluna-lista-item {
 	width: 30%;
 	padding: 50px 20px;
+	list-style: none;
 }
 
 .coluna-lista-item__content__title h5 {
@@ -218,6 +219,7 @@
 	font-size: 16px;
 	font-family: Arial, sans-serif !important;
 	border: none;
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
